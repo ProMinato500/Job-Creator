@@ -2,9 +2,9 @@ import React from "react";
 
 const Job = () => {
   return (
-    <div className="bg-white border-1 border-solid border-[#DADEDF] rounded-[10px] w-[49%] px-4 py-2 flex gap-2">
+    <div className="bg-white border-1 border-solid border-[#DADEDF] rounded-[10px] w-full md:max-w-[40%] px-4 py-3 flex gap-3">
       <div className="w-9">
-        <img src="/images/job-logo.png" alt="" />
+        <img className="rounded-md" src="/images/job-logo.png" alt="" />
       </div>
       <div className="flex flex-col gap-3">
         <div>
@@ -14,13 +14,13 @@ const Job = () => {
             Chennai, Tamilnadu, India (In-office)
           </p>
         </div>
-        <div className="leading-6 text-sm">
+        <div className="leading-6 text-sm mt-4">
           <p className="">Part-Time (9.00 am - 5.00 pm IST)</p>
           <p>Experience (1 - 2 years)</p>
           <p className="">INR (₹) 30,000 - 50,000 / Month</p>
           <p className="">51-200 employees</p>
         </div>
-        <div className="flex gap-5">
+        <div className="flex gap-5 mt-2">
           <button className="bg-[#1597E4] text-sm px-3 py-2 rounded-lg text-white">
             Apply Now
           </button>

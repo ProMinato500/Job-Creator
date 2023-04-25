@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="container h-screen bg-[#D8D8D8]">
+    <div className="min-h-screen bg-[#D8D8D8] font-poppins overflow-x-hidden">
       <Navbar />
       <Jobs />
     </div>

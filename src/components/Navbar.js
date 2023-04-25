@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import Form from "./Form";
 
 const Navbar = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
   return (
-    <div className="container px-2 py-2 bg-slate-100 shadow-md">
-      <div className="w-[100vw]">
-        <button className="text-[20px] bg-red-500 px-5 py-2 flex items-center gap-2 rounded-md">
+    <div className=" px-2 py-2 bg-slate-100 shadow-md">
+      <div className="">
+        <button
+          onClick={handleOpenModal}
+          className="text-[20px] bg-red-500 px-5 py-2 flex items-center gap-2 rounded-md"
+        >
           <svg
             className="flex w-7"
             xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +32,7 @@ const Navbar = () => {
           Create Job
         </button>
       </div>
+      {showModal && <Form />}
     </div>
   );
 };
