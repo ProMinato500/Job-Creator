@@ -33,8 +33,8 @@ const Form = () => {
   };
 
   return (
-    <div className="object-center h-screen w-screen flex justify-center items-center">
-      <div className="lg:w-[32vw]">
+    <div className="h-screen w-screen flex justify-center items-center">
+      <div className="lg:w-[32vw] sm:w-1/2 w-full ">
         {currentPage === 1 && (
           <FPage1 onNext={handleNextPage} formData={formData} />
         )}

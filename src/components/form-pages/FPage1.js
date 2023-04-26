@@ -12,12 +12,12 @@ const FormPage1 = ({ onNext, formData }) => {
   };
 
   return (
-    <div className="flex flex-col gap-5 py-9 px-9 rounded-lg bg-white border-[1px]">
+    <div className="w-full flex flex-col gap-5 py-9 px-9 rounded-lg bg-white border-[1px]">
       <div className="flex justify-between">
         <h1 className="text-xl">Create a job</h1>
         <p className="text-xl">Step 1</p>
       </div>
-      <form className="flex flex-col gap-10">
+      <form className="container flex flex-col gap-10">
         <div className="flex flex-col">
           <label className="text-sm mb-2 font-medium" htmlFor="title">
             Job title<span className="text-red-500">*</span>
@@ -61,8 +61,8 @@ const FormPage1 = ({ onNext, formData }) => {
           />
         </div>
 
-        <div className="container w-full md:columns-2 flex justify-between gap-2">
-          <div className="flex flex-col">
+        <div className="md:columns-2 flex justify-between lg:flex-row lg:gap-1 gap-10 flex-col">
+          <div className="flex flex-col lg:w-[12vw] xl:w-[13.5vw]">
             <label className="text-sm mb-2 font-medium" htmlFor="location">
               Location
             </label>
@@ -75,7 +75,7 @@ const FormPage1 = ({ onNext, formData }) => {
               onChange={(e) => setLocation(e.target.value)}
             />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col lg:w-[12vw] xl:w-[13.5vw]">
             <label className="text-sm mb-2 font-medium" htmlFor="remote">
               Remote type
             </label>

@@ -14,7 +14,7 @@ const FormPage1 = ({ onSave, formData }) => {
   };
 
   return (
-    <div className="flex flex-col gap-5 py-9 px-9 rounded-lg bg-white border-[1px]">
+    <div className="w-full flex flex-col gap-5 py-9 px-9 rounded-lg bg-white border-[1px]">
       <div className="flex justify-between">
         <h1 className="text-xl">Create a job</h1>
         <p className="text-xl">Step 2</p>
@@ -24,13 +24,13 @@ const FormPage1 = ({ onSave, formData }) => {
           <label className="text-sm mb-2 font-medium" htmlFor="expMin">
             Experience
           </label>
-          <div className="flex justify-between">
+          <div className="flex justify-between lg:flex-row lg:gap-1 gap-10 flex-col">
             <input
               type="text"
               id="expMin"
               value={expMin}
               placeholder="Minimum"
-              className="rounded-md p-2 text-[#7A7A7A] border-[1px] w-[17vw]"
+              className="rounded-md p-2 text-[#7A7A7A] border-[1px] lg:w-[12vw] xl:w-[13.5vw]"
               onChange={(e) => setExpMin(e.target.value)}
             />
             <input
@@ -38,7 +38,7 @@ const FormPage1 = ({ onSave, formData }) => {
               id="expMax"
               value={expMax}
               placeholder="Maximum"
-              className="rounded-md p-2 text-[#7A7A7A] border-[1px] w-[17vw]"
+              className="rounded-md p-2 text-[#7A7A7A] border-[1px] lg:w-[12vw] xl:w-[13.5vw]"
               onChange={(e) => setExpMax(e.target.value)}
             />
           </div>
@@ -47,13 +47,13 @@ const FormPage1 = ({ onSave, formData }) => {
           <label className="text-sm mb-2 font-medium" htmlFor="salMin">
             Salary
           </label>
-          <div className="flex justify-between">
+          <div className="flex justify-between lg:flex-row lg:gap-1 gap-10 flex-col">
             <input
               type="text"
               id="salMin"
               value={salMin}
               placeholder="Minimum"
-              className="rounded-md p-2 text-[#7A7A7A] border-[1px] w-[17vw]"
+              className="rounded-md p-2 text-[#7A7A7A] border-[1px] lg:w-[12vw] xl:w-[13.5vw]"
               onChange={(e) => setSalMin(e.target.value)}
             />
             <input
@@ -61,7 +61,7 @@ const FormPage1 = ({ onSave, formData }) => {
               id="salMax"
               value={salMax}
               placeholder="Maximum"
-              className="rounded-md p-2 text-[#7A7A7A] border-[1px] w-[17vw]"
+              className="rounded-md p-2 text-[#7A7A7A] border-[1px] lg:w-[12vw] xl:w-[13.5vw]"
               onChange={(e) => setSalMax(e.target.value)}
             />
           </div>

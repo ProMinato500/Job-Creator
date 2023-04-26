@@ -4,7 +4,7 @@ import Job from "./Job";
 const Jobs = () => {
   const [job, setJob] = useState({});
 
-  useEffect(() => {
+  const fetchItems = () => {
     fetch("https://644416f090738aa7c07ed4b0.mockapi.io/jobs", {
       method: "GET",
       headers: { "content-type": "application/json" },
@@ -21,11 +21,17 @@ const Jobs = () => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  useEffect(() => {
+    fetchItems();
   }, []);
 
   const handleDelete = (componentId) => {
     fetch(
-      `https://644416f090738aa7c07ed4b0.mockapi.io/jobs/${componentId + 1}`,
+      `https://644416f090738aa7c07ed4b0.mockapi.io/jobs/${parseInt(
+        componentId
+      )}`,
       {
         method: "DELETE",
       }
@@ -36,6 +42,7 @@ const Jobs = () => {
         }
       })
       .then((job) => {
+        fetchItems();
         console.log("Successfully deleted");
       })
       .catch((error) => {

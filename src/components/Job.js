@@ -43,7 +43,7 @@ const Job = ({ onDelete, data }) => {
       </div>
       <div className="">
         <button
-          onClick={() => onDelete(data[0])}
+          onClick={() => onDelete(data[1].id)}
           className="border-2 rounded-md cursor-pointer"
         >
           <svg
