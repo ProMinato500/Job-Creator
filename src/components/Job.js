@@ -28,12 +28,12 @@ const Job = ({ onDelete, data }) => {
             <p className="">{data[1].totalEmp} employees</p>
           </div>
           <div className="flex mt-2">
-            {data[1].apply === true && (
+            {data[1].apply.toString() === "true" && (
               <button className="bg-[#1597E4] text-sm px-3 py-2.5 rounded-lg text-white">
                 Apply Now
               </button>
             )}
-            {data[1].apply === false && (
+            {data[1].apply.toString() === "false" && (
               <button className="border-[#1597E4] border-2 text-sm px-2 py-2 rounded-lg text-[#1597E4]">
                 External Apply
               </button>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Form from "./Form";
 
-const Navbar = () => {
+const Navbar = ({ fetchItems }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -33,7 +33,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      {showModal && <Form />}
+      {showModal && <Form showModal={setShowModal} fetchItems={fetchItems} />}
     </>
   );
 };

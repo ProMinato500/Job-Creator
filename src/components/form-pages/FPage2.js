@@ -6,7 +6,7 @@ const FormPage1 = ({ onSave, formData }) => {
   const [salMin, setSalMin] = useState(formData.salMin || "");
   const [salMax, setSalMax] = useState(formData.salMax || "");
   const [totalEmp, setTotalEmp] = useState(formData.totalEmp || "");
-  const [apply, setApply] = useState(formData.apply || true);
+  const [apply, setApply] = useState(formData.apply || false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -89,9 +89,8 @@ const FormPage1 = ({ onSave, formData }) => {
                 <input
                   type="radio"
                   name="apply"
-                  value="0"
+                  value="true"
                   className="mr-[2px] h-[16px] w-[16px]"
-                  checked={apply === true}
                   onChange={(e) => setApply(e.target.value)}
                 />
                 Quick Apply
@@ -102,9 +101,8 @@ const FormPage1 = ({ onSave, formData }) => {
                 <input
                   type="radio"
                   name="apply"
-                  value="1"
+                  value="false"
                   className="mr-[2px] h-[16px] w-[16px]"
-                  checked={apply === false}
                   onChange={(e) => setApply(e.target.value)}
                 />
                 External Apply

@@ -1,28 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Job from "./Job";
 
-const Jobs = () => {
-  const [job, setJob] = useState({});
-
-  const fetchItems = () => {
-    fetch("https://644416f090738aa7c07ed4b0.mockapi.io/jobs", {
-      method: "GET",
-      headers: { "content-type": "application/json" },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((jobs) => {
-        console.log("Successfully fetched");
-        setJob(jobs);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+const Jobs = ({ job, setJob, fetchItems }) => {
   useEffect(() => {
     fetchItems();
   }, []);
@@ -43,7 +22,6 @@ const Jobs = () => {
       })
       .then((job) => {
         fetchItems();
-        console.log("Successfully deleted");
       })
       .catch((error) => {
         console.log(error);

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FPage1 from "./form-pages/FPage1";
 import FPage2 from "./form-pages/FPage2";
 
-const Form = () => {
+const Form = ({ showModal, fetchItems }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [formData, setFormData] = useState({});
 
@@ -30,6 +30,8 @@ const Form = () => {
       .catch((error) => {
         return error;
       });
+    showModal(false);
+    fetchItems();
   };
 
   return (
