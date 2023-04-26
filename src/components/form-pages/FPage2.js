@@ -6,11 +6,11 @@ const FormPage1 = ({ onSave, formData }) => {
   const [salMin, setSalMin] = useState(formData.salMin || "");
   const [salMax, setSalMax] = useState(formData.salMax || "");
   const [totalEmp, setTotalEmp] = useState(formData.totalEmp || "");
-  const [apply, setApply] = useState(formData.apply || "");
+  const [apply, setApply] = useState(formData.apply || true);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onSave();
+    onSave({ expMin, expMax, salMin, salMax, totalEmp, apply });
   };
 
   return (
@@ -19,7 +19,7 @@ const FormPage1 = ({ onSave, formData }) => {
         <h1 className="text-xl">Create a job</h1>
         <p className="text-xl">Step 2</p>
       </div>
-      <form onSubmit={onSubmit} className="flex flex-col gap-10">
+      <form className="flex flex-col gap-10">
         <div className="flex flex-col">
           <label className="text-sm mb-2 font-medium" htmlFor="expMin">
             Experience
@@ -30,7 +30,7 @@ const FormPage1 = ({ onSave, formData }) => {
               id="expMin"
               value={expMin}
               placeholder="Minimum"
-              className="rounded-md p-2 text-[#7A7A7A] border-[1px] w-[13.5vw]"
+              className="rounded-md p-2 text-[#7A7A7A] border-[1px] w-[17vw]"
               onChange={(e) => setExpMin(e.target.value)}
             />
             <input
@@ -38,7 +38,7 @@ const FormPage1 = ({ onSave, formData }) => {
               id="expMax"
               value={expMax}
               placeholder="Maximum"
-              className="rounded-md p-2 text-[#7A7A7A] border-[1px] w-[13.5vw]"
+              className="rounded-md p-2 text-[#7A7A7A] border-[1px] w-[17vw]"
               onChange={(e) => setExpMax(e.target.value)}
             />
           </div>
@@ -53,7 +53,7 @@ const FormPage1 = ({ onSave, formData }) => {
               id="salMin"
               value={salMin}
               placeholder="Minimum"
-              className="rounded-md p-2 text-[#7A7A7A] border-[1px] w-[13.5vw]"
+              className="rounded-md p-2 text-[#7A7A7A] border-[1px] w-[17vw]"
               onChange={(e) => setSalMin(e.target.value)}
             />
             <input
@@ -61,7 +61,7 @@ const FormPage1 = ({ onSave, formData }) => {
               id="salMax"
               value={salMax}
               placeholder="Maximum"
-              className="rounded-md p-2 text-[#7A7A7A] border-[1px] w-[13.5vw]"
+              className="rounded-md p-2 text-[#7A7A7A] border-[1px] w-[17vw]"
               onChange={(e) => setSalMax(e.target.value)}
             />
           </div>
@@ -89,9 +89,9 @@ const FormPage1 = ({ onSave, formData }) => {
                 <input
                   type="radio"
                   name="apply"
-                  value="quick"
+                  value="0"
                   className="mr-[2px] h-[16px] w-[16px]"
-                  checked={apply === "quick"}
+                  checked={apply === true}
                   onChange={(e) => setApply(e.target.value)}
                 />
                 Quick Apply
@@ -102,9 +102,9 @@ const FormPage1 = ({ onSave, formData }) => {
                 <input
                   type="radio"
                   name="apply"
-                  value="external"
+                  value="1"
                   className="mr-[2px] h-[16px] w-[16px]"
-                  checked={apply === "external"}
+                  checked={apply === false}
                   onChange={(e) => setApply(e.target.value)}
                 />
                 External Apply
@@ -115,7 +115,8 @@ const FormPage1 = ({ onSave, formData }) => {
         <div className="w-full mt-16 flex justify-end">
           <button
             className="bg-[#1597E4] py-3 px-5 text-white font-medium rounded-md"
-            type="submit"
+            type="button"
+            onClick={onSubmit}
           >
             Save
           </button>
