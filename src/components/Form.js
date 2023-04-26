@@ -35,7 +35,7 @@ const Form = ({ showModal, fetchItems }) => {
   };
 
   return (
-    <div className="h-screen w-screen flex justify-center items-center">
+    <div className="h-screen w-screen fixed flex justify-center items-center bg-gray-500 bg-opacity-50">
       <div className="lg:w-[32vw] sm:w-1/2 w-full ">
         {currentPage === 1 && (
           <FPage1 onNext={handleNextPage} formData={formData} />
