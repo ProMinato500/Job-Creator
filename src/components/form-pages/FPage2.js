@@ -9,7 +9,9 @@ const FormPage1 = ({ onSave, formData, setFormData }) => {
   return (
     <div className="w-full flex flex-col gap-5 py-9 px-9 rounded-lg bg-white border-[1px]">
       <div className="flex justify-between">
-        <h1 className="text-xl">Create a job</h1>
+        <h1 className="text-xl">
+          {formData.hasOwnProperty("id") ? "Update" : "Create a job"}
+        </h1>
         <p className="text-xl">Step 2</p>
       </div>
       <form className="flex flex-col gap-10">
