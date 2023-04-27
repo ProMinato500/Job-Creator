@@ -6,6 +6,7 @@ import Form from "./components/Form";
 function App() {
   const [job, setJob] = useState({});
   const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({});
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -30,6 +31,49 @@ function App() {
         console.log(error);
       });
   };
+  const handleSubmit = (data) => {
+    setFormData({ ...formData, ...data });
+
+    if (formData.hasOwnProperty("id")) {
+      fetch(`https://644416f090738aa7c07ed4b0.mockapi.io/jobs/${formData.id}`, {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+        })
+        .then((task) => {
+          handleCloseModal();
+          fetchItems();
+          console.log("Updated Successfully");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      fetch("https://644416f090738aa7c07ed4b0.mockapi.io/jobs", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+        })
+        .then((task) => {
+          handleCloseModal();
+          fetchItems();
+          console.log("Form data:", formData);
+        })
+        .catch((error) => {
+          return error;
+        });
+    }
+  };
   return (
     <div className="min-h-screen bg-[#D8D8D8] font-poppins overflow-x-hidden">
       <Navbar
@@ -38,8 +82,21 @@ function App() {
         handleOpenModal={handleOpenModal}
         handleCloseModal={handleCloseModal}
       />
-      {showModal && <Form showModal={setShowModal} fetchItems={fetchItems} />}
-      <Jobs job={job} setJob={setJob} fetchItems={fetchItems} />
+      {showModal && (
+        <Form
+          formData={formData}
+          setFormData={setFormData}
+          handleSubmit={handleSubmit}
+        />
+      )}
+      <Jobs
+        job={job}
+        setJob={setJob}
+        fetchItems={fetchItems}
+        handleOpenModal={handleOpenModal}
+        formData={formData}
+        setFormData={setFormData}
+      />
     </div>
   );
 }

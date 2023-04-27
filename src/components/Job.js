@@ -1,6 +1,6 @@
 import React from "react";
 
-const Job = ({ onDelete, data }) => {
+const Job = ({ onUpdate, onDelete, data }) => {
   return (
     <div className="bg-white border-1 border-solid border-[#DADEDF] rounded-[10px] w-full md:max-w-[40%] px-4 py-3 flex justify-between">
       <div className="flex gap-3">
@@ -43,7 +43,7 @@ const Job = ({ onDelete, data }) => {
       </div>
       <div className="flex gap-2 h-6">
         <button
-          // onClick={() => onDelete(data[1].id)}
+          onClick={() => onUpdate(data[1].id)}
           className="border-2 rounded-md cursor-pointer"
         >
           <svg

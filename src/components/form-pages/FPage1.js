@@ -8,7 +8,15 @@ const FormPage1 = ({ onNext, formData }) => {
   const [remote, setRemote] = useState(formData.remote || "");
 
   const handleNext = () => {
-    onNext({ title, company, industry, location, remote });
+    if (
+      title.trim() === "" ||
+      company.trim() === "" ||
+      industry.trim() === ""
+    ) {
+      alert("Please fill in all required fields.");
+    } else {
+      onNext({ title, company, industry, location, remote });
+    }
   };
 
   return (
