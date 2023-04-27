@@ -6,7 +6,19 @@ import Form from "./components/Form";
 function App() {
   const [job, setJob] = useState({});
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    title: "",
+    company: "",
+    industry: "",
+    location: "",
+    remote: "",
+    expMin: "",
+    expMax: "",
+    salMin: "",
+    salMax: "",
+    totalEmp: "",
+    apply: null,
+  });
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -32,7 +44,7 @@ function App() {
       });
   };
   const handleSubmit = (data) => {
-    setFormData({ ...formData, ...data });
+    setFormData({ data });
 
     if (formData.hasOwnProperty("id")) {
       fetch(`https://644416f090738aa7c07ed4b0.mockapi.io/jobs/${formData.id}`, {

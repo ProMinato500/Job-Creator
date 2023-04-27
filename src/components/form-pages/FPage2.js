@@ -1,16 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
-const FormPage1 = ({ onSave, formData }) => {
-  const [expMin, setExpMin] = useState(formData.expMin || "");
-  const [expMax, setExpMax] = useState(formData.expMax || "");
-  const [salMin, setSalMin] = useState(formData.salMin || "");
-  const [salMax, setSalMax] = useState(formData.salMax || "");
-  const [totalEmp, setTotalEmp] = useState(formData.totalEmp || "");
-  const [apply, setApply] = useState(formData.apply || false);
-
+const FormPage1 = ({ onSave, formData, setFormData }) => {
   const onSubmit = (e) => {
     e.preventDefault();
-    onSave({ expMin, expMax, salMin, salMax, totalEmp, apply });
+    onSave();
   };
 
   return (
@@ -28,18 +21,22 @@ const FormPage1 = ({ onSave, formData }) => {
             <input
               type="text"
               id="expMin"
-              value={expMin}
+              value={formData.expMin}
               placeholder="Minimum"
               className="rounded-md p-2 text-[#7A7A7A] border-[1px] lg:w-[12vw] xl:w-[13.5vw]"
-              onChange={(e) => setExpMin(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, expMin: e.target.value })
+              }
             />
             <input
               type="text"
               id="expMax"
-              value={expMax}
+              value={formData.expMax}
               placeholder="Maximum"
               className="rounded-md p-2 text-[#7A7A7A] border-[1px] lg:w-[12vw] xl:w-[13.5vw]"
-              onChange={(e) => setExpMax(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, expMax: e.target.value })
+              }
             />
           </div>
         </div>
@@ -51,18 +48,22 @@ const FormPage1 = ({ onSave, formData }) => {
             <input
               type="text"
               id="salMin"
-              value={salMin}
+              value={formData.salMin}
               placeholder="Minimum"
               className="rounded-md p-2 text-[#7A7A7A] border-[1px] lg:w-[12vw] xl:w-[13.5vw]"
-              onChange={(e) => setSalMin(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, salMin: e.target.value })
+              }
             />
             <input
               type="text"
               id="salMax"
-              value={salMax}
+              value={formData.salMax}
               placeholder="Maximum"
               className="rounded-md p-2 text-[#7A7A7A] border-[1px] lg:w-[12vw] xl:w-[13.5vw]"
-              onChange={(e) => setSalMax(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, salMax: e.target.value })
+              }
             />
           </div>
         </div>
@@ -73,10 +74,12 @@ const FormPage1 = ({ onSave, formData }) => {
           <input
             type="text"
             id="totalEmp"
-            value={totalEmp}
+            value={formData.totalEmp}
             placeholder="ex. 100"
             className="rounded-md p-2 text-[#7A7A7A] border-[1px]"
-            onChange={(e) => setTotalEmp(e.target.value)}
+            onChange={(e) =>
+              setFormData({ ...formData, totalEmp: e.target.value })
+            }
           />
         </div>
         <div className="flex flex-col">
@@ -89,9 +92,10 @@ const FormPage1 = ({ onSave, formData }) => {
                 <input
                   type="radio"
                   name="apply"
-                  value="true"
+                  value={true}
+                  defaultChecked={formData.apply === true}
                   className="mr-[2px] h-[16px] w-[16px]"
-                  onChange={(e) => setApply(e.target.value)}
+                  onChange={(e) => setFormData({ ...formData, apply: true })}
                 />
                 Quick Apply
               </label>
@@ -101,9 +105,10 @@ const FormPage1 = ({ onSave, formData }) => {
                 <input
                   type="radio"
                   name="apply"
-                  value="false"
+                  value={false}
+                  defaultChecked={formData.apply === false}
                   className="mr-[2px] h-[16px] w-[16px]"
-                  onChange={(e) => setApply(e.target.value)}
+                  onChange={(e) => setFormData({ ...formData, apply: false })}
                 />
                 External Apply
               </label>

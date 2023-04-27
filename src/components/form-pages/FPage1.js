@@ -1,21 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
-const FormPage1 = ({ onNext, formData }) => {
-  const [title, setTitle] = useState(formData.title || "");
-  const [company, setCompany] = useState(formData.company || "");
-  const [industry, setIndustry] = useState(formData.industry || "");
-  const [location, setLocation] = useState(formData.location || "");
-  const [remote, setRemote] = useState(formData.remote || "");
-
+const FormPage1 = ({ onNext, formData, setFormData }) => {
   const handleNext = () => {
     if (
-      title.trim() === "" ||
-      company.trim() === "" ||
-      industry.trim() === ""
+      formData.title.trim() === "" ||
+      formData.company.trim() === "" ||
+      formData.industry.trim() === ""
     ) {
       alert("Please fill in all required fields.");
     } else {
-      onNext({ title, company, industry, location, remote });
+      onNext();
     }
   };
 
@@ -33,11 +27,13 @@ const FormPage1 = ({ onNext, formData }) => {
           <input
             type="text"
             id="title"
-            value={title}
+            value={formData.title}
             className="rounded-md p-2 text-[#7A7A7A] border-[1px]"
             required
             placeholder="ex. UX UI Designer"
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) =>
+              setFormData({ ...formData, title: e.target.value })
+            }
           />
         </div>
         <div className="flex flex-col">
@@ -47,11 +43,13 @@ const FormPage1 = ({ onNext, formData }) => {
           <input
             type="text"
             id="company"
-            value={company}
+            value={formData.company}
             required
             className="rounded p-2 text-[#7A7A7A] border-[1px]"
             placeholder="ex. Google"
-            onChange={(e) => setCompany(e.target.value)}
+            onChange={(e) =>
+              setFormData({ ...formData, company: e.target.value })
+            }
           />
         </div>
         <div className="flex flex-col">
@@ -61,11 +59,13 @@ const FormPage1 = ({ onNext, formData }) => {
           <input
             type="text"
             id="industry"
-            value={industry}
+            value={formData.industry}
             required
             className="rounded p-2 text-[#7A7A7A] border-[1px]"
             placeholder="ex. Information Technology"
-            onChange={(e) => setIndustry(e.target.value)}
+            onChange={(e) =>
+              setFormData({ ...formData, industry: e.target.value })
+            }
           />
         </div>
 
@@ -77,10 +77,12 @@ const FormPage1 = ({ onNext, formData }) => {
             <input
               type="text"
               id="location"
-              value={location}
+              value={formData.location}
               className="rounded p-2 text-[#7A7A7A] border-[1px]"
               placeholder="ex. Chennai"
-              onChange={(e) => setLocation(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, location: e.target.value })
+              }
             />
           </div>
           <div className="flex flex-col lg:w-[12vw] xl:w-[13.5vw]">
@@ -90,10 +92,12 @@ const FormPage1 = ({ onNext, formData }) => {
             <input
               type="text"
               id="remote"
-              value={remote}
+              value={formData.remote}
               className="rounded p-2 text-[#7A7A7A] border-[1px]"
               placeholder="ex. In-office"
-              onChange={(e) => setRemote(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, remote: e.target.value })
+              }
             />
           </div>
         </div>
